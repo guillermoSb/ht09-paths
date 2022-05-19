@@ -31,6 +31,8 @@ public class FloydTest {
         ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
         ArrayList<ArrayList<Integer>> matrix2 = Floyd.generateTestMatrix();
         ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix, matrix2);
+        System.out.println(matrix);
+        System.out.println(result);
         ArrayList<ArrayList<Integer>> expected = new ArrayList<>();
         ArrayList<Integer> row1 = new ArrayList<>();
         row1.add(0);

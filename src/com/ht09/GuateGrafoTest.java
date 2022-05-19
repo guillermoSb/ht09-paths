@@ -44,4 +44,23 @@ public class GuateGrafoTest {
         }
 
     }
+
+    @Test
+    public void shouldAddConneciton() {
+        ArrayList<String> cities = FileLoader.readFileCities("guategrafotest.txt");
+        ArrayList<ArrayList<Integer>> matrix = FileLoader.readFileMatrix("guategrafotest.txt");
+        ArrayList<ArrayList<Integer>> adyacentMatrix = FileLoader.readFileAdyacentMatrix("guategrafotest.txt");
+        GuateGrafo guateGrafo = new GuateGrafo(cities, adyacentMatrix, matrix);
+        try {
+            guateGrafo.addConnection("Mixco", "Peten", 100);
+            guateGrafo.addConnection("Mixco", "Huehue", 200);
+            guateGrafo.findRoute("Mixco", "Huehue");
+            guateGrafo.addConnection("Escuintla", "Huehue", 2);
+            guateGrafo.interruptConnection("Escuintla", "Huehue");
+            guateGrafo.findRoute("Mixco", "Huehue");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
