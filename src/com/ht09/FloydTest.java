@@ -53,7 +53,15 @@ public class FloydTest {
         expected.add(row3);
         expected.add(row4);
         assertEquals(result, expected);
+    }
 
+    @Test
+    public void shouldReturnCenter() {
+        ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
+        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix);
+        Integer centerColumn = Floyd.findCenter(result);
+        assertNotNull(centerColumn);
+        assertEquals(centerColumn, 0);
     }
 
 

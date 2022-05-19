@@ -55,4 +55,35 @@ public class Floyd {
         matrix.add(row4);
         return matrix;
     }
+
+
+    public static Integer findCenter(ArrayList<ArrayList<Integer>> matrix) {
+        Integer[] eccentricities = new Integer[matrix.size()];
+        for (int i = 0; i < matrix.size(); i++) {
+            for (int j = 0; j < matrix.size(); j++) {
+                Integer value = matrix.get(i).get(j);   // Current Value
+                // Check if the value is null - nothing to do
+                if (value != null) {
+                    if (eccentricities[j] != null) {
+                        eccentricities[j] = Math.max(eccentricities[j], value);
+                    } else {
+                        eccentricities[j] = value;
+                    }
+                }
+            }
+        }
+        Integer currentMin = null;
+        for (int i = 0; i < eccentricities.length; i++) {
+            if (currentMin == null) {
+                currentMin = i;
+                continue;
+            }
+            if (eccentricities[i] != null){
+                if (eccentricities[i] < currentMin) {
+                    currentMin = i;
+                }
+            }
+        }
+        return currentMin;
+    }
 }
