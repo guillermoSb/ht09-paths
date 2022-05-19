@@ -4,10 +4,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GuateGrafo {
-    ArrayList<String> cities = new ArrayList<>();
-    ArrayList<ArrayList<Integer>> adyacencyMatrix = null;
-    ArrayList<ArrayList<Integer>> pathMatrix = null;
-    ArrayList<ArrayList<Integer>> shortestMatrix = null;
+    private ArrayList<String> cities = new ArrayList<>();
+    private ArrayList<ArrayList<Integer>> adyacencyMatrix = null;
+    private ArrayList<ArrayList<Integer>> pathMatrix = null;
+    private ArrayList<ArrayList<Integer>> shortestMatrix = null;
 
     public GuateGrafo(ArrayList<String> cities,ArrayList<ArrayList<Integer>> adyacencyMatrix, ArrayList<ArrayList<Integer>> pathMatrix) {
         this.cities = cities;
@@ -95,7 +95,18 @@ public class GuateGrafo {
     private void calculateShortestPath() {
         ArrayList<ArrayList<Integer>> matrixToSolve = GuateGrafo.cloneMatrix(pathMatrix);
         this.shortestMatrix = Floyd.solve(matrixToSolve, adyacencyMatrix);
+        System.out.println("Matriz del camino más corto (null = infinito): ");
+        System.out.println(this.shortestMatrix);
+        System.out.println("Matriz de adyacencia: ");
+        System.out.println(this.adyacencyMatrix);
+    }
 
+    /**
+     * Get the center
+     */
+    public String center() {
+        calculateShortestPath();
+        return cities.get(Floyd.findCenter(shortestMatrix));
     }
 
     /**
@@ -128,4 +139,7 @@ public class GuateGrafo {
         return path;
     }
 
+    public ArrayList<String> getCities() {
+        return cities;
+    }
 }
