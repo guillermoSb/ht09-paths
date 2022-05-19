@@ -103,7 +103,7 @@ public class GuateGrafo {
      * @param from  Origin city name
      * @param to    Dest city name
      */
-    public void findRoute(String from, String to) throws Exception {
+    public ArrayList<String> findRoute(String from, String to) throws Exception {
         // Find the indices of the origin and destination
         Integer originIndex = cities.indexOf(from);
         Integer destIndex = cities.indexOf(to);
@@ -117,12 +117,15 @@ public class GuateGrafo {
         System.out.printf("Distancia más corta (km) = %d\n", shortestDistance);
         Integer u = originIndex;
         if (adyacencyMatrix.get(originIndex).get(destIndex) == -1) throw new Exception("No hay forma de llegar entre esas dos ciudades.");
-        System.out.println("Camino a tomar: ");
+//        System.out.println("Camino a tomar: ");
+        ArrayList<String> path = new ArrayList<>();
         while (u != destIndex) {
-            System.out.printf("%s -> ",cities.get(u));
+//            System.out.printf("%s -> ",cities.get(u));
+            path.add(cities.get(u));
             u = adyacencyMatrix.get(u).get(destIndex);
         }
-        System.out.println(cities.get(destIndex));
+        path.add(cities.get(destIndex));
+        return path;
     }
 
 }

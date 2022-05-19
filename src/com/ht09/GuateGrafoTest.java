@@ -38,7 +38,7 @@ public class GuateGrafoTest {
         ArrayList<ArrayList<Integer>> adyacentMatrix = FileLoader.readFileAdyacentMatrix("guategrafotest.txt");
         GuateGrafo guateGrafo = new GuateGrafo(cities, adyacentMatrix, matrix);
         try {
-            guateGrafo.findRoute("Mixco", "SantaLucia");
+            assertEquals(guateGrafo.findRoute("Mixco", "SantaLucia").size(), 4);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class GuateGrafoTest {
             guateGrafo.findRoute("Mixco", "Huehue");
             guateGrafo.addConnection("Escuintla", "Huehue", 2);
             guateGrafo.interruptConnection("Escuintla", "Huehue");
-            guateGrafo.findRoute("Mixco", "Huehue");
+           assertEquals(guateGrafo.findRoute("Mixco", "Huehue").size(), 2);
 
         } catch (Exception e) {
             e.printStackTrace();
