@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Floyd {
+
+    /**
+     * Finds the shortest paths for a matrix
+     * @param matrix
+     * @param next
+     * @return
+     */
     public static ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> matrix, ArrayList<ArrayList<Integer>> next) {
         ArrayList<ArrayList<Integer>> solution = matrix;    // Solution to be returned
         for (int k = 0; k < matrix.size(); k++) {
@@ -31,6 +38,10 @@ public class Floyd {
         return solution;
     }
 
+    /**
+     * Generates a matrix
+     * @return
+     */
     public static ArrayList<ArrayList<Integer>> generateTestMatrix(){
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
         ArrayList<Integer> row1 = new ArrayList<>();
@@ -61,6 +72,11 @@ public class Floyd {
     }
 
 
+    /**
+     * Finds the center of a matrix
+     * @param matrix
+     * @return
+     */
     public static Integer findCenter(ArrayList<ArrayList<Integer>> matrix) {
         Integer[] eccentricities = new Integer[matrix.size()];
         for (int i = 0; i < matrix.size(); i++) {
