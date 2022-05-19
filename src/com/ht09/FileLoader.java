@@ -8,9 +8,9 @@ import java.util.Vector;
 
 public class FileLoader {
     /**
-     * Lee el nombre de un archivo y los datos los simula como pacientes
+     * Lee el nombre de un archivo
      * @param name Archivo
-     * @return Vector con datos de tipo Paciente
+     * @return ArrayList<String> con ciudades
      */
     public static ArrayList<String> readFileCities(String name) {
         ArrayList<String> cities = new ArrayList<>(); // ArrayList que guarda las ciudades
@@ -45,9 +45,9 @@ public class FileLoader {
     }
 
     /**
-     * Lee el nombre de un archivo y los datos los simula como pacientes
+     * Lee el nombre de un archivo
      * @param name Archivo
-     * @return Vector con datos de tipo Paciente
+     * @return ArrayList<ArrayList<Integer>> matriz
      */
     public static ArrayList<ArrayList<Integer>> readFileMatrix(String name) {
         ArrayList<String> cities = readFileCities(name); // ArrayList que guarda las ciudades
@@ -90,9 +90,9 @@ public class FileLoader {
     }
 
     /**
-     * Lee el nombre de un archivo y lee la matriz de adyacencia
+     * Lee el nombre de un archivo
      * @param name Archivo
-     * @return Vector con datos de tipo Paciente
+     * @return ArrayList<ArrayList<Integer>> matriz
      */
     public static ArrayList<ArrayList<Integer>> readFileAdyacentMatrix(String name) {
         ArrayList<String> cities = readFileCities(name); // ArrayList que guarda las ciudades
