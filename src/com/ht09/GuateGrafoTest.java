@@ -24,4 +24,24 @@ public class GuateGrafoTest {
             assertEquals(matrix.size(), matrix.get(i).size());
         }
     }
+
+    @Test
+    public void shouldCreateAdyacencyMatrix() {
+        ArrayList<ArrayList<Integer>> matrix = FileLoader.readFileAdyacentMatrix("guategrafotest.txt");
+        System.out.println(matrix);
+    }
+
+    @Test
+    public void shouldFindShortestRoute() {
+        ArrayList<String> cities = FileLoader.readFileCities("guategrafotest.txt");
+        ArrayList<ArrayList<Integer>> matrix = FileLoader.readFileMatrix("guategrafotest.txt");
+        ArrayList<ArrayList<Integer>> adyacentMatrix = FileLoader.readFileAdyacentMatrix("guategrafotest.txt");
+        GuateGrafo guateGrafo = new GuateGrafo(cities, adyacentMatrix, matrix);
+        try {
+            guateGrafo.findRoute("Mixco", "SantaLucia");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Floyd {
-    public static ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> matrix) {
+    public static ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> matrix, ArrayList<ArrayList<Integer>> next) {
         ArrayList<ArrayList<Integer>> solution = matrix;    // Solution to be returned
         for (int k = 0; k < matrix.size(); k++) {
             for (int i = 0; i < matrix.size(); i++) {
@@ -15,9 +15,13 @@ public class Floyd {
                     Integer mediumToDest = matrix.get(k).get(j);    // Origin to destination
                     if (originToMedium != null && mediumToDest != null) {
                         if (current != null) {
-                            newRow.set(j, Math.min(originToMedium + mediumToDest, current));
+                            if (current > originToMedium + mediumToDest) {
+                                newRow.set(j, originToMedium + mediumToDest);
+                                next.get(i).set(j, next.get(i).get(k));
+                            }
                         } else {
                             newRow.set(j, originToMedium + mediumToDest);
+                            next.get(i).set(j, next.get(i).get(k));
                         }
                     }
                     solution.set(i, newRow);

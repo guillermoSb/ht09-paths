@@ -12,21 +12,25 @@ public class FloydTest {
     @Test
     public void shouldReturnAValue() {
         ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
-        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix);
+        ArrayList<ArrayList<Integer>> matrix2 = Floyd.generateTestMatrix();
+        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix, matrix2);
         assertNotNull(result);
     }
 
     @Test
     public void shouldReturnAnArray() {
         ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
-        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix);
+        ArrayList<ArrayList<Integer>> matrix2 = Floyd.generateTestMatrix();
+        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix, matrix2);
+
         assertInstanceOf(ArrayList.class, result);
     }
 
     @Test
     public void shouldSolveCorrectly() {
         ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
-        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix);
+        ArrayList<ArrayList<Integer>> matrix2 = Floyd.generateTestMatrix();
+        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix, matrix2);
         ArrayList<ArrayList<Integer>> expected = new ArrayList<>();
         ArrayList<Integer> row1 = new ArrayList<>();
         row1.add(0);
@@ -58,7 +62,8 @@ public class FloydTest {
     @Test
     public void shouldReturnCenter() {
         ArrayList<ArrayList<Integer>> matrix = Floyd.generateTestMatrix();
-        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix);
+        ArrayList<ArrayList<Integer>> matrix2 = Floyd.generateTestMatrix();
+        ArrayList<ArrayList<Integer>> result = Floyd.solve(matrix, matrix2);
         Integer centerColumn = Floyd.findCenter(result);
         assertNotNull(centerColumn);
         assertEquals(centerColumn, 0);
